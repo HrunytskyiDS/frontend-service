@@ -1,0 +1,9 @@
+{
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.enablePersistentSessions": false
+}
