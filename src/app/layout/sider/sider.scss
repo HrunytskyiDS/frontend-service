@@ -1,0 +1,35 @@
+:host {
+  display: contents;
+}
+
+.sidebar-logo {
+  position: relative;
+  transition: all 0.3s;
+  background: #001529;
+  padding-left: 24px;
+  height: 64px;
+  overflow: hidden;
+  line-height: 64px;
+}
+
+.sidebar-logo img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+}
+
+.sidebar-logo h1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 20px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  font-family:
+    Avenir,
+    Helvetica Neue,
+    Arial,
+    Helvetica,
+    sans-serif;
+}

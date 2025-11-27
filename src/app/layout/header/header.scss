@@ -1,33 +1,23 @@
-.logo {
-  float: left;
-  background: #001529;
-  padding-right: 24px;
+:host {
+  display: block;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  background: #fff;
+  padding: 0;
   height: 64px;
-  line-height: 64px;
 }
 
-.logo img {
-  display: inline-block;
-  vertical-align: middle;
-  width: 32px;
-  height: 32px;
-}
-
-.logo h1 {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 0 15px;
-  color: #fff;
-  font-weight: 600;
+.header-trigger {
+  transition:
+    all 0.3s,
+    padding 0s;
+  cursor: pointer;
+  padding: 20px 24px;
+  height: 64px;
   font-size: 20px;
-  font-family:
-    Avenir,
-    Helvetica Neue,
-    Arial,
-    Helvetica,
-    sans-serif;
+  user-select: none;
 }
 
-.top-nav {
-  line-height: 64px;
+.trigger:hover {
+  color: #1890ff;
 }
