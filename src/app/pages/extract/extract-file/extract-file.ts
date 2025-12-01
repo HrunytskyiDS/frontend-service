@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzFlexModule } from 'ng-zorro-antd/flex';
+import { Component, inject } from '@angular/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam, NzUploadModule } from 'ng-zorro-antd/upload';
 
 @Component({
-  selector: 'app-home',
-  imports: [FormsModule, NzButtonModule, NzFlexModule, NzIconModule, NzInputModule, NzUploadModule],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  selector: 'app-extract-file',
+  imports: [NzIconModule, NzUploadModule],
+  templateUrl: './extract-file.html',
+  styleUrl: './extract-file.scss',
 })
-export class Home {
-  constructor(private messageService: NzMessageService) {}
+export class ExtractFile {
+  private messageService = inject(NzMessageService);
 
-  handleChange({ file, fileList }: NzUploadChangeParam): void {
+  onChange({ file, fileList }: NzUploadChangeParam): void {
     const status = file.status;
 
     console.log('status:', status);

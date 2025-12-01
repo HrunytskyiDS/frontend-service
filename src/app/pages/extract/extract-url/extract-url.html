@@ -1,0 +1,10 @@
+<nz-input-search (nzSearch)="onSearch($event)">
+  <input
+    nz-input
+    placeholder="Скопіюйте та вставте URL сюди..."
+    [(ngModel)]="value"
+  />
+  <span nzInputSearchEnterButton>
+    <nz-icon nzType="send" />
+  </span>
+</nz-input-search>

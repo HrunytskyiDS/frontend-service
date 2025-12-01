@@ -1,0 +1,8 @@
+<nz-segmented
+  class="segmented"
+  [nzOptions]="segmentedOptions"
+  (ngModelChange)="onSegmentedChange($event)"
+  [(ngModel)]="segmentedValue"
+/>
+
+<router-outlet />
