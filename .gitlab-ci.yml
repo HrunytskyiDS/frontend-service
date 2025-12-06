@@ -17,6 +17,7 @@ build:
   script:
     - npm i -g @angular/cli
     - npm ci
+    - echo "$PUBLIC_URL"
     - ng build --base-href "$PUBLIC_URL" --deploy-url "$PUBLIC_URL"
   artifacts:
     paths:
