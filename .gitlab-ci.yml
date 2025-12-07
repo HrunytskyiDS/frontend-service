@@ -1,6 +1,6 @@
 image: node:20
 
-pages:
+create-pages:
   stage: deploy
 
   cache:
@@ -22,3 +22,5 @@ pages:
 
   only:
     - main
+
+  pages: true
