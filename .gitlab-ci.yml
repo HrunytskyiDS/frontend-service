@@ -1,39 +1,24 @@
 image: node:20
 
-stages:
-  - build
-  - deploy
+pages:
+  stage: deploy
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
+  cache:
+    paths:
+      - node_modules/
 
-variables:
-  PUBLIC_URL: 'https://ipzm242_gds.git.ztu.edu.ua/text-analysis-service'
-
-build:
-  stage: build
   script:
     - npm i -g @angular/cli
     - npm ci
-    - echo "$PUBLIC_URL"
-    - ng build --base-href "$PUBLIC_URL"
-  artifacts:
-    paths:
-      - dist/
-
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  script:
+    - ng build
+    - mkdir -p public
     - ls dist
     - export APP_DIR=$(ls dist)
-    - mv dist/$APP_DIR/browser public
+    - mv dist/$APP_DIR/browser/* public/
+
   artifacts:
     paths:
       - public
+
   only:
     - main
-  pages: true
