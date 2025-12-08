@@ -1,0 +1,19 @@
+<nz-spin
+  nzTip="Завантаження файлу..."
+  [nzSpinning]="isUploadFileLoading()"
+>
+  <nz-upload
+    class="upload-text"
+    nzType="drag"
+    [nzBeforeUpload]="onBeforeUpload"
+    [nzDisabled]="isUploadFileLoading()"
+    [nzMultiple]="false"
+    [nzShowUploadList]="false"
+  >
+    <p class="ant-upload-drag-icon">
+      <nz-icon nzType="inbox" />
+    </p>
+    <p class="ant-upload-text">Натисніть або перетягніть файл у цю область для завантаження</p>
+    <p class="ant-upload-hint">Підтримується завантаження лише одного файлу</p>
+  </nz-upload>
+</nz-spin>

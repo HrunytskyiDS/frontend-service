@@ -1,18 +1,18 @@
 import { Routes } from '@angular/router';
 
-import { ExtractFile } from '@/pages/extract/extract-file/extract-file';
-import { ExtractUrl } from '@/pages/extract/extract-url/extract-url';
+import { ExtractFileComponent } from '@/pages/extract/extract-file/extract-file.component';
+import { ExtractUrlComponent } from '@/pages/extract/extract-url/extract-url.component';
 
-import { Extract } from './extract';
+import { ExtractPage } from './extract.page';
 
 export const EXTRACT_ROUTES: Routes = [
   {
     path: '',
-    component: Extract,
+    component: ExtractPage,
     children: [
-      { path: '', component: ExtractFile },
+      { path: '', component: ExtractFileComponent },
       { path: 'file', pathMatch: 'full', redirectTo: '' },
-      { path: 'url', component: ExtractUrl },
+      { path: 'url', component: ExtractUrlComponent },
     ],
   },
 ];

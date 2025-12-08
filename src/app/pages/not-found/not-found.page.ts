@@ -6,7 +6,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 @Component({
   selector: 'app-not-found',
   imports: [RouterLink, NzButtonModule, NzResultModule],
-  templateUrl: './not-found.html',
-  styleUrl: './not-found.scss',
+  templateUrl: './not-found.page.html',
+  styleUrl: './not-found.page.scss',
 })
-export class NotFound {}
+export class NotFoundPage {}

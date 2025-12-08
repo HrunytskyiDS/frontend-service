@@ -6,9 +6,9 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 @Component({
   selector: 'app-sider',
   imports: [RouterLink, NzIconModule, NzMenuModule],
-  templateUrl: './sider.html',
-  styleUrl: './sider.scss',
+  templateUrl: './sider.component.html',
+  styleUrl: './sider.component.scss',
 })
-export class Sider {
+export class SiderComponent {
   isCollapsed = model.required<boolean>();
 }

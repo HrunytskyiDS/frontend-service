@@ -1,0 +1,26 @@
+@if (isLoading()) {
+  <nz-skeleton [nzActive]="true" />
+} @else if (response(); as response) {
+  <h3
+    class="title"
+    nz-typography
+  >
+    Ключові слова
+  </h3>
+  <div
+    nz-flex
+    nzGap="small"
+    nzWrap="wrap"
+  >
+    @for (keyword of response.keywords; track keyword) {
+      <nz-tag nzColor="geekblue">{{ keyword }}</nz-tag>
+    }
+  </div>
+  <h3
+    class="title"
+    nz-typography
+  >
+    Короткий зміст
+  </h3>
+  <p>{{ response.summary }}</p>
+}

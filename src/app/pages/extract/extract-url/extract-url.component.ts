@@ -6,10 +6,10 @@ import { NzInputModule, NzInputSearchEvent } from 'ng-zorro-antd/input';
 @Component({
   selector: 'app-extract-url',
   imports: [FormsModule, NzIconModule, NzInputModule],
-  templateUrl: './extract-url.html',
-  styleUrl: './extract-url.scss',
+  templateUrl: './extract-url.component.html',
+  styleUrl: './extract-url.component.scss',
 })
-export class ExtractUrl {
+export class ExtractUrlComponent {
   readonly value = signal('');
 
   onSearch(event: NzInputSearchEvent): void {
