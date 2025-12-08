@@ -6,6 +6,14 @@ export interface UploadFileResponse {
   text_id: number;
 }
 
+export interface UploadUrlRequest {
+  url: string;
+}
+
+export interface UploadUrlResponse {
+  text_id: number;
+}
+
 export interface ProcessTextRequest {
   textId: number;
 }
