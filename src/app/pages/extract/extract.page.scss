@@ -1,3 +1,8 @@
-.segmented {
+.segmented-wrapper {
+  display: block;
   margin-bottom: 24px;
+  width: 100%;
+  overflow-x: auto;
+  user-select: none;
+  white-space: nowrap;
 }

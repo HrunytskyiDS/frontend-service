@@ -7,6 +7,8 @@ import {
   ProcessTextResponse,
   UploadFileRequest,
   UploadFileResponse,
+  UploadInputRequest,
+  UploadInputResponse,
   UploadUrlRequest,
   UploadUrlResponse,
 } from '@/pages/extract/extract.models';
@@ -36,6 +38,10 @@ export class ExtractService {
     return this.httpClient.post<UploadUrlResponse>(`${SERVICE_PREFIXES.TEXT_EXTRACTOR}/extractors/url`, null, {
       params: { url: request.url },
     });
+  }
+
+  uploadInput(request: UploadInputRequest): Observable<UploadInputResponse> {
+    return this.httpClient.post<UploadInputResponse>(`${SERVICE_PREFIXES.TEXT_EXTRACTOR}/extractors/input`, request);
   }
 
   processText({ textId, ...request }: ProcessTextRequest): Observable<ProcessTextResponse> {

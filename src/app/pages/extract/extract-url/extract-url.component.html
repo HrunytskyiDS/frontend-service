@@ -1,10 +1,15 @@
-<nz-input-search (nzSearch)="onSearch($event)">
+<nz-input-search
+  [nzLoading]="isUploadUrlLoading()"
+  (nzSearch)="onSearch($event)"
+>
   <input
     nz-input
     placeholder="Скопіюйте та вставте URL сюди..."
     [(ngModel)]="value"
   />
   <span nzInputSearchEnterButton>
-    <nz-icon nzType="send" />
+    @if (!isUploadUrlLoading()) {
+      <nz-icon nzType="send" />
+    }
   </span>
 </nz-input-search>

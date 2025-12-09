@@ -1,10 +1,11 @@
 import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-import { EMPTY, finalize, switchMap } from 'rxjs';
+import { EMPTY, filter, finalize, switchMap, takeUntil } from 'rxjs';
 
 import { ProcessTextResponse } from '@/pages/extract/extract.models';
 import { ExtractService } from '@/pages/extract/extract.service';
@@ -16,6 +17,7 @@ import { ExtractService } from '@/pages/extract/extract.service';
   styleUrl: './extract-result.component.scss',
 })
 export class ExtractResultComponent implements OnInit {
+  private router = inject(Router);
   private destroyRef = inject(DestroyRef);
   private messageService = inject(NzMessageService);
   private extractService = inject(ExtractService);
@@ -24,13 +26,23 @@ export class ExtractResultComponent implements OnInit {
   response = signal<ProcessTextResponse | null>(null);
 
   ngOnInit(): void {
+    const routeChange$ = this.router.events.pipe(filter((event) => event instanceof NavigationStart));
+
+    const routeSubscription = routeChange$.subscribe(() => {
+      this.response.set(null);
+      this.isLoading.set(false);
+    });
+
     const textIdSubscription = this.extractService.textId$
       .pipe(
         switchMap((textId) => {
           if (textId) {
             this.isLoading.set(true);
 
-            return this.extractService.processText({ textId }).pipe(finalize(() => this.isLoading.set(false)));
+            return this.extractService.processText({ textId }).pipe(
+              takeUntil(routeChange$),
+              finalize(() => this.isLoading.set(false)),
+            );
           }
 
           return EMPTY;
@@ -44,6 +56,9 @@ export class ExtractResultComponent implements OnInit {
         },
       });
 
-    this.destroyRef.onDestroy(() => textIdSubscription.unsubscribe());
+    this.destroyRef.onDestroy(() => {
+      routeSubscription.unsubscribe();
+      textIdSubscription.unsubscribe();
+    });
   }
 }

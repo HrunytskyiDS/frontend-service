@@ -1,9 +1,11 @@
-<nz-segmented
-  class="segmented"
-  [nzOptions]="segmentedOptions"
-  (ngModelChange)="onSegmentedChange($event)"
-  [(ngModel)]="segmentedValue"
-/>
+<div class="segmented-wrapper">
+  <nz-segmented
+    class="segmented"
+    [nzOptions]="segmentedOptions"
+    (ngModelChange)="onSegmentedChange($event)"
+    [(ngModel)]="segmentedValue"
+  />
+</div>
 
 <router-outlet />
 

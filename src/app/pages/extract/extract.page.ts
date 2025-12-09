@@ -17,6 +17,7 @@ export class ExtractPage implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   segmentedOptions: NzSegmentedOption[] = [
+    { label: 'Ввести текст', value: '/extract/input', icon: 'edit' },
     { label: 'Завантажити файл', value: '/extract', icon: 'file-text' },
     { label: 'Вставити посилання', value: '/extract/url', icon: 'link' },
   ];

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { ExtractFileComponent } from '@/pages/extract/extract-file/extract-file.component';
+import { ExtractInputComponent } from '@/pages/extract/extract-input/extract-input.component';
 import { ExtractUrlComponent } from '@/pages/extract/extract-url/extract-url.component';
 
 import { ExtractPage } from './extract.page';
@@ -13,6 +14,7 @@ export const EXTRACT_ROUTES: Routes = [
       { path: '', component: ExtractFileComponent },
       { path: 'file', pathMatch: 'full', redirectTo: '' },
       { path: 'url', component: ExtractUrlComponent },
+      { path: 'input', component: ExtractInputComponent },
     ],
   },
 ];

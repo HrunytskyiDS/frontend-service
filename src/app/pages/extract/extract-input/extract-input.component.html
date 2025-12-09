@@ -1,0 +1,16 @@
+<textarea
+  nz-input
+  placeholder="Введіть або вставте свій текст тут…"
+  [nzAutosize]="{ minRows: 6 }"
+  [(ngModel)]="value"
+></textarea>
+<div class="submit-wrapper">
+  <button
+    nz-button
+    nzType="primary"
+    [nzLoading]="isUploadInputLoading()"
+    (click)="onSubmitClick()"
+  >
+    Обробити текст
+  </button>
+</div>
