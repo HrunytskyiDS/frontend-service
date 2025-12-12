@@ -19,13 +19,3 @@ export interface UploadInputRequest {
 }
 
 export interface UploadInputResponse extends BaseUploadResponse {}
-
-export interface ProcessTextRequest {
-  textId: number;
-}
-
-export interface ProcessTextResponse {
-  text_id: number;
-  keywords: string[];
-  summary: string;
-}

@@ -1,0 +1,14 @@
+<div>
+  <div class="text">{{ visibleText() }}</div>
+
+  @if (isLong()) {
+    <button
+      nz-button
+      nzSize="small"
+      nzType="default"
+      (click)="toggle()"
+    >
+      {{ isExpanded() ? 'Показати менше' : 'Показати більше' }}
+    </button>
+  }
+</div>

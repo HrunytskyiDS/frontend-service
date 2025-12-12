@@ -1,0 +1,33 @@
+<nz-list [nzLoading]="isTextsLoading()">
+  @if (texts(); as texts) { @for (text of texts.items; track text.id) {
+  <nz-list-item class="text-item">
+    <a [routerLink]="`/saved/${text.id}`">{{text.content}}</a>
+    <span
+      class="date"
+      nz-typography
+      nzType="secondary"
+    >
+      {{text.created_at | date: 'dd.MM.y HH:mm'}}
+    </span>
+  </nz-list-item>
+  } @if (!texts.total_items) {
+  <nz-list-empty />
+  }
+  <nz-pagination
+    class="pagination"
+    nzAlign="center"
+    nzHideOnSinglePage
+    nzResponsive
+    [nzPageIndex]="page()"
+    [nzPageSize]="pageSize()"
+    [nzShowTotal]="totalTemplate"
+    [nzTotal]="texts.total_items"
+    (nzPageIndexChange)="onPageIndexChange($event)"
+  />
+  <ng-template
+    #totalTemplate
+    let-total
+  >
+    Всього записів: {{total}} </ng-template
+  >}
+</nz-list>

@@ -7,15 +7,7 @@
   >
     Ключові слова
   </h3>
-  <div
-    nz-flex
-    nzGap="small"
-    nzWrap="wrap"
-  >
-    @for (keyword of response.keywords; track keyword) {
-      <nz-tag nzColor="geekblue">{{ keyword }}</nz-tag>
-    }
-  </div>
+  <app-keywords [keywords]="response.keywords" />
   <h3
     class="title"
     nz-typography

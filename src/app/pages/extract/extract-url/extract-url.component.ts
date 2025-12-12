@@ -6,6 +6,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { finalize } from 'rxjs';
 
 import { ExtractService } from '@/pages/extract/extract.service';
+import { AnalysisService } from '@/shared/services/analysis.service';
 
 @Component({
   selector: 'app-extract-url',
@@ -17,6 +18,7 @@ export class ExtractUrlComponent {
   private destroyRef = inject(DestroyRef);
   private messageService = inject(NzMessageService);
   private extractService = inject(ExtractService);
+  private analysisService = inject(AnalysisService);
 
   value = signal('');
   isUploadUrlLoading = signal(false);
@@ -34,9 +36,9 @@ export class ExtractUrlComponent {
       .uploadUrl({ url: value })
       .pipe(finalize(() => this.isUploadUrlLoading.set(false)))
       .subscribe({
-        next: (response) => this.extractService.changeTextId(response.text_id),
+        next: (response) => this.analysisService.changeTextId(response.text_id),
         error: () => {
-          this.extractService.changeTextId(null);
+          this.analysisService.changeTextId(null);
           this.messageService.error('Не вдалося обробити текст за посиланням.');
         },
       });

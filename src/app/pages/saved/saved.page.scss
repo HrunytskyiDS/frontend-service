@@ -1,0 +1,14 @@
+.text-item {
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 8px;
+}
+
+.date {
+  align-self: flex-end;
+}
+
+.pagination {
+  margin-top: 12px;
+}

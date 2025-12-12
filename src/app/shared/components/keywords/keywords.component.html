@@ -1,0 +1,9 @@
+<div
+  nz-flex
+  nzGap="small"
+  nzWrap="wrap"
+>
+  @for (keyword of keywords(); track keyword) {
+    <nz-tag nzColor="geekblue">{{ keyword }}</nz-tag>
+  }
+</div>

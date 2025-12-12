@@ -8,6 +8,11 @@ export const routes: Routes = [
     title: 'ExtractLab',
   },
   {
+    path: 'saved',
+    loadChildren: () => import('./pages/saved/saved.routes').then((m) => m.SAVED_ROUTES),
+    title: 'Збережене',
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
     title: 'Сторінку не знайдено',
