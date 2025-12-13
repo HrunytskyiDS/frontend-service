@@ -4,11 +4,12 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NzSegmentedModule, NzSegmentedOption } from 'ng-zorro-antd/segmented';
 import { filter } from 'rxjs';
 
+import { AnalysisParamsComponent } from '@/pages/extract/analysis-params/analysis-params.component';
 import { ExtractResultComponent } from '@/pages/extract/extract-result/extract-result.component';
 
 @Component({
   selector: 'app-extract',
-  imports: [FormsModule, RouterOutlet, NzSegmentedModule, ExtractResultComponent],
+  imports: [FormsModule, RouterOutlet, NzSegmentedModule, ExtractResultComponent, AnalysisParamsComponent],
   templateUrl: './extract.page.html',
   styleUrl: './extract.page.scss',
 })

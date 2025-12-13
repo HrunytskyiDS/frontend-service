@@ -1,0 +1,53 @@
+@if (isAnalysisResultLoading()) {
+<nz-skeleton [nzActive]="true" />
+} @else if (isNotFound()) {
+<nz-result
+  nzStatus="404"
+  nzSubTitle="Текст не знайдено."
+  nzTitle="404"
+>
+  <div nz-result-extra>
+    <a
+      routerLink=".."
+      nz-button
+      nzType="primary"
+    >
+      Повернутися назад
+    </a>
+  </div>
+</nz-result>
+} @else if (analysisResult(); as analysisResult) {
+<h1 nz-typography>{{ analysisResult.title }}</h1>
+
+<p
+  nz-typography
+  nzType="secondary"
+>
+  {{ analysisResult.created_at | date: 'dd.MM.y HH:mm' }}
+</p>
+
+<div nz-flex [nzVertical]="true">
+  <span>Кількість ключових слів: {{ analysisResult.n_final }}</span>
+  <span>Рівень різноманітності ключових слів: {{ analysisResult.diversity }}</span>
+  <span>Автоматично визначати кількість ключових слів: {{ analysisResult.use_semantic_n ? 'так' : 'ні' }}</span>
+</div>
+
+<h3
+  class="title"
+  nz-typography
+>
+  Ключові слова
+</h3>
+<app-keywords [keywords]="analysisResult.keywords" />
+
+<h3
+  class="title"
+  nz-typography
+>
+  Короткий зміст
+</h3>
+<p>{{ analysisResult.summary_text }}</p>
+
+<h4 nz-typography>Текст</h4>
+<app-show-more [text]="analysisResult.content" />
+}

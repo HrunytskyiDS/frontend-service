@@ -25,6 +25,7 @@ export class ExtractInputComponent {
 
   onSubmitClick(): void {
     this.isUploadInputLoading.set(true);
+    this.analysisService.resetTextId();
 
     const subscription = this.extractService
       .uploadInput({ input: this.value() })
@@ -32,7 +33,7 @@ export class ExtractInputComponent {
       .subscribe({
         next: (response) => this.analysisService.changeTextId(response.text_id),
         error: () => {
-          this.analysisService.changeTextId(null);
+          this.analysisService.resetTextId();
           this.messageService.error('Не вдалося обробити введений текст.');
         },
       });

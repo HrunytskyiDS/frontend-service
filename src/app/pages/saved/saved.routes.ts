@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { AnalysisResultPage } from '@/pages/saved/analysis-result/analysis-result.page';
 import { SavedPage } from '@/pages/saved/saved.page';
-import { TextPage } from '@/pages/saved/text/text.page';
 
 export const SAVED_ROUTES: Routes = [
   {
@@ -9,7 +9,7 @@ export const SAVED_ROUTES: Routes = [
     component: SavedPage,
   },
   {
-    path: ':textId',
-    component: TextPage,
+    path: ':analysisResultId',
+    component: AnalysisResultPage,
   },
 ];

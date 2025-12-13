@@ -1,0 +1,47 @@
+<nz-form-item class="control">
+  <nz-form-label
+    nzLabelAlign="left"
+    nzMax="100"
+    nzMin="0"
+    [nzNoColon]="true"
+  >
+    Кількість ключових слів
+  </nz-form-label>
+  <nz-form-control>
+    <nz-input-number
+      class="input-number"
+      name="topN"
+      [disabled]="analysisService.useSemanticN()"
+      [(ngModel)]="analysisService.topN"
+    />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item class="control">
+  <nz-form-label
+    nzLabelAlign="left"
+    [nzNoColon]="true"
+  >
+    Рівень різноманітності ключових слів
+  </nz-form-label>
+  <nz-form-control>
+    <nz-input-number
+      class="input-number"
+      name="diversity"
+      nzMax="1"
+      nzMin="0"
+      nzStep="0.1"
+      [(ngModel)]="analysisService.diversity"
+    />
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item class="control">
+  <nz-form-control>
+    <label
+      class="checkbox"
+      nz-checkbox
+      [(ngModel)]="analysisService.useSemanticN"
+    >
+      Автоматично визначати кількість ключових слів
+    </label>
+  </nz-form-control>
+</nz-form-item>

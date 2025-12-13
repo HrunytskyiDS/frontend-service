@@ -31,6 +31,7 @@ export class ExtractUrlComponent {
     }
 
     this.isUploadUrlLoading.set(true);
+    this.analysisService.resetTextId();
 
     const subscription = this.extractService
       .uploadUrl({ url: value })
@@ -38,7 +39,7 @@ export class ExtractUrlComponent {
       .subscribe({
         next: (response) => this.analysisService.changeTextId(response.text_id),
         error: () => {
-          this.analysisService.changeTextId(null);
+          this.analysisService.resetTextId();
           this.messageService.error('Не вдалося обробити текст за посиланням.');
         },
       });

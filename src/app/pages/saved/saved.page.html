@@ -1,14 +1,57 @@
-<nz-list [nzLoading]="isTextsLoading()">
+<nz-list [nzLoading]="isAnalysisResultsLoading()">
   @if (texts(); as texts) { @for (text of texts.items; track text.id) {
   <nz-list-item class="text-item">
-    <a [routerLink]="`/saved/${text.id}`">{{text.content}}</a>
-    <span
-      class="date"
+    <p
+      class="text-description"
       nz-typography
       nzType="secondary"
     >
-      {{text.created_at | date: 'dd.MM.y HH:mm'}}
-    </span>
+      {{ text.content }}
+    </p>
+    <h4
+      class="text-title"
+      nz-typography
+    >
+      <a [routerLink]="`/saved/${text.id}`">{{text.title}}</a>
+    </h4>
+    <div
+      nz-flex
+      nzAlign="center"
+      nzGap="middle"
+      nzJustify="space-between"
+      nzWrap="wrap"
+    >
+      <div
+        nz-flex
+        nzGap="middle"
+        nzWrap="wrap"
+      >
+        <span
+          nz-typography
+          nzType="secondary"
+        >
+          Кількість: {{ text.n_final }}
+        </span>
+        <span
+          nz-typography
+          nzType="secondary"
+        >
+          Різноманітність: {{ text.diversity }}
+        </span>
+        <span
+          nz-typography
+          nzType="secondary"
+        >
+          Автопідбір: {{ text.use_semantic_n ? 'так' : 'ні' }}
+        </span>
+      </div>
+      <span
+        nz-typography
+        nzType="secondary"
+      >
+        {{ text.created_at | date: 'dd.MM.y HH:mm' }}
+      </span>
+    </div>
   </nz-list-item>
   } @if (!texts.total_items) {
   <nz-list-empty />
@@ -28,6 +71,7 @@
     #totalTemplate
     let-total
   >
-    Всього записів: {{total}} </ng-template
-  >}
+    Всього записів: {{ total }}
+  </ng-template>
+  }
 </nz-list>

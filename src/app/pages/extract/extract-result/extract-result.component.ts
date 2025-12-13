@@ -26,7 +26,7 @@ export class ExtractResultComponent implements OnInit {
   ngOnInit(): void {
     const routeChange$ = this.router.events.pipe(filter((event) => event instanceof NavigationStart));
 
-    const routeSubscription = routeChange$.subscribe(() => this.analysisService.changeTextId(null));
+    const routeSubscription = routeChange$.subscribe(() => this.analysisService.resetTextId());
 
     const textIdSubscription = this.analysisService.textId$
       .pipe(

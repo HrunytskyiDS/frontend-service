@@ -24,6 +24,7 @@ export class ExtractFileComponent {
 
   onBeforeUpload = (file: NzUploadFile): boolean => {
     this.isUploadFileLoading.set(true);
+    this.analysisService.resetTextId();
 
     const subscription = this.extractService
       .uploadFile({ file: file as unknown as File })
@@ -32,7 +33,7 @@ export class ExtractFileComponent {
         next: (response) => this.analysisService.changeTextId(response.text_id),
         complete: () => this.messageService.success(`Файл "${file.name}" успішно завантажено.`),
         error: () => {
-          this.analysisService.changeTextId(null);
+          this.analysisService.resetTextId();
           this.messageService.error(`Не вдалося завантажити файл "${file.name}".`);
         },
       });
