@@ -13,6 +13,11 @@ export const routes: Routes = [
     title: 'Збережене',
   },
   {
+    path: 'dashboard',
+    loadComponent: () => import('./pages/dashboard/dashboard.page').then((m) => m.DashboardPage),
+    title: 'Dashboard',
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found.page').then((m) => m.NotFoundPage),
     title: 'Сторінку не знайдено',

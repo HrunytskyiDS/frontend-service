@@ -31,7 +31,7 @@ import { ShowMoreComponent } from '@/shared/components/show-more/show-more.compo
 })
 export class AnalysisResultPage implements OnInit {
   private destroyRef = inject(DestroyRef);
-  savedService = inject(SavedService);
+  private savedService = inject(SavedService);
 
   analysisResultId = input.required<number>();
 

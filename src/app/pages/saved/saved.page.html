@@ -23,7 +23,7 @@
     >
       <div
         nz-flex
-        nzGap="middle"
+        nzAlign="center"
         nzWrap="wrap"
       >
         <span
@@ -32,12 +32,14 @@
         >
           Кількість: {{ text.n_final }}
         </span>
+        <nz-divider nzType="vertical" />
         <span
           nz-typography
           nzType="secondary"
         >
           Різноманітність: {{ text.diversity }}
         </span>
+        <nz-divider nzType="vertical" />
         <span
           nz-typography
           nzType="secondary"
@@ -61,8 +63,8 @@
     nzAlign="center"
     nzHideOnSinglePage
     nzResponsive
-    [nzPageIndex]="page()"
-    [nzPageSize]="pageSize()"
+    [nzPageIndex]="texts.page"
+    [nzPageSize]="texts.page_size"
     [nzShowTotal]="totalTemplate"
     [nzTotal]="texts.total_items"
     (nzPageIndexChange)="onPageIndexChange($event)"

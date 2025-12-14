@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component, DestroyRef, OnInit, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
@@ -15,7 +16,7 @@ import { PagedList } from '@/shared/models/pagination.models';
 
 @Component({
   selector: 'app-saved',
-  imports: [DatePipe, RouterLink, NzFlexModule, NzListModule, NzTypographyModule, NzPaginationModule],
+  imports: [DatePipe, RouterLink, NzDividerModule, NzFlexModule, NzListModule, NzTypographyModule, NzPaginationModule],
   templateUrl: './saved.page.html',
   styleUrl: './saved.page.scss',
 })
@@ -28,20 +29,14 @@ export class SavedPage implements OnInit {
   isAnalysisResultsLoading = signal(true);
   texts = signal<PagedList<AnalysisResultItemResponse> | null>(null);
 
-  page = signal<number>(DEFAULT_QUERY_VALUES.PAGE);
-  pageSize = signal<number>(DEFAULT_QUERY_VALUES.PAGE_SIZE);
-
   ngOnInit(): void {
     const subscription = this.route.queryParamMap
       .pipe(
         switchMap((params) => {
           this.isAnalysisResultsLoading.set(true);
 
-          const page = stringToNumber(params.get(QUERY_PARAMS.PAGE), this.page());
-          const pageSize = stringToNumber(params.get(QUERY_PARAMS.PAGE_SIZE), this.pageSize());
-
-          this.page.set(page);
-          this.pageSize.set(pageSize);
+          const page = stringToNumber(params.get(QUERY_PARAMS.PAGE), DEFAULT_QUERY_VALUES.PAGE);
+          const pageSize = stringToNumber(params.get(QUERY_PARAMS.PAGE_SIZE), DEFAULT_QUERY_VALUES.PAGE_SIZE);
 
           return this.savedService
             .loadAnalysisResults({ page, pageSize })

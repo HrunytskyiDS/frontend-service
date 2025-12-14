@@ -1,0 +1,30 @@
+<apx-chart
+  class="chart"
+  [chart]="keywordCountChartOptions.chart"
+  [noData]="keywordCountChartOptions.noData"
+  [series]="keywordCountChartOptions.series"
+  [title]="keywordCountChartOptions.title"
+  [xaxis]="keywordCountChartOptions.xaxis"
+  [yaxis]="keywordCountChartOptions.yaxis"
+/>
+<apx-chart
+  class="chart"
+  [chart]="diversityPerformanceChartOptions.chart"
+  [fill]="diversityPerformanceChartOptions.fill"
+  [markers]="diversityPerformanceChartOptions.markers"
+  [noData]="diversityPerformanceChartOptions.noData"
+  [series]="diversityPerformanceChartOptions.series"
+  [title]="diversityPerformanceChartOptions.title"
+  [xaxis]="diversityPerformanceChartOptions.xaxis"
+  [yaxis]="diversityPerformanceChartOptions.yaxis"
+/>
+<apx-chart
+  #analysisDurationChart
+  class="chart"
+  [chart]="analysisDurationChartOptions.chart"
+  [noData]="analysisDurationChartOptions.noData"
+  [series]="analysisDurationChartOptions.series"
+  [title]="analysisDurationChartOptions.title"
+  [xaxis]="analysisDurationChartOptions.xaxis"
+  [yaxis]="analysisDurationChartOptions.yaxis"
+/>

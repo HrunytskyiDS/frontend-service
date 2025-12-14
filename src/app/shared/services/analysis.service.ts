@@ -3,6 +3,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { SERVICE_PREFIXES } from '@/shared/constants/api.constants';
+import { CACHE_TAGS } from '@/shared/constants/cache.constants';
+import { buildHttpContextWithCache } from '@/shared/interceptors/cache.interceptor';
 
 export interface ProcessTextRequest {
   textId: number;
@@ -41,6 +43,7 @@ export class AnalysisService {
       `${SERVICE_PREFIXES.TEXT_ANALYSIS}/analysis/${textId}/process`,
       request,
       {
+        context: buildHttpContextWithCache({ invalidatesTags: [CACHE_TAGS.ANALYSIS] }),
         params: {
           top_n: this.topN(),
           diversity: this.diversity(),

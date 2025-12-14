@@ -1,8 +1,9 @@
 <nz-form-item class="control">
   <nz-form-label
     nzLabelAlign="left"
-    nzMax="100"
-    nzMin="0"
+    nzMax="25"
+    nzMin="1"
+    nzStep="1"
     [nzNoColon]="true"
   >
     Кількість ключових слів
@@ -29,7 +30,7 @@
       name="diversity"
       nzMax="1"
       nzMin="0"
-      nzStep="0.1"
+      nzStep="0.05"
       [(ngModel)]="analysisService.diversity"
     />
   </nz-form-control>
