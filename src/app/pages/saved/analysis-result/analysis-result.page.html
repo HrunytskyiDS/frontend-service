@@ -19,14 +19,36 @@
 } @else if (analysisResult(); as analysisResult) {
 <h1 nz-typography>{{ analysisResult.title }}</h1>
 
-<p
-  nz-typography
-  nzType="secondary"
+<div
+  class="meta-container"
+  nz-flex
+  nzAlign="center"
+  nzGap="middle"
+  nzJustify="space-between"
+  nzWrap="wrap"
 >
-  {{ analysisResult.created_at | date: 'dd.MM.y HH:mm' }}
-</p>
+  <span
+    nz-typography
+    nzType="secondary"
+  >
+    {{ analysisResult.created_at | date: 'dd.MM.y HH:mm' }}
+  </span>
+  <a
+    download
+    nz-button
+    nzDanger
+    nzType="primary"
+    [href]="downloadSummaryPdfUrl()"
+  >
+    <nz-icon nzType="file-pdf" />
+    Завантажити pdf
+  </a>
+</div>
 
-<div nz-flex [nzVertical]="true">
+<div
+  nz-flex
+  [nzVertical]="true"
+>
   <span>Кількість ключових слів: {{ analysisResult.n_final }}</span>
   <span>Рівень різноманітності ключових слів: {{ analysisResult.diversity }}</span>
   <span>Автоматично визначати кількість ключових слів: {{ analysisResult.use_semantic_n ? 'так' : 'ні' }}</span>
